@@ -106,7 +106,8 @@ if __name__ == '__main__':
     logger.info('Finished training.')
     if os.path.isdir(model_path):
         logger.info(
-            '[LightGBM Train] Directory "{}" is provided, use default file name "lgbm.model"'.format(model_path))
+            f'[LightGBM Train] Directory "{model_path}" is provided, use default file name "lgbm.model"'
+        )
         model_path = os.path.join(model_path, 'lgbm.model')
 
     bst.save_model(model_path)

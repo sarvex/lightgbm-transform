@@ -33,12 +33,14 @@ if __name__ == '__main__':
     logger.info('>>>>>LightGBM Infer Module>>>>>')
     if os.path.isdir(model_path):
         logger.info(
-            '[LightGBM Infer] Directory "{}" is provided, use default file name "lgbm.model"'.format(model_path))
+            f'[LightGBM Infer] Directory "{model_path}" is provided, use default file name "lgbm.model"'
+        )
         model_path = os.path.join(model_path, 'lgbm.model')
 
     if os.path.isdir(infer_result):
         logger.info(
-            '[LightGBM Infer] Directory "{}" is provided, use default file name "pred.result"'.format(infer_result))
+            f'[LightGBM Infer] Directory "{infer_result}" is provided, use default file name "pred.result"'
+        )
         infer_result = os.path.join(infer_result, 'pred.result')
 
     bst = lgb.Booster(model_file=model_path)

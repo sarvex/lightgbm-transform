@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # generate json config.
     with open(transform_file) as fin:
         transform_str = ''.join(fin.readlines())
-    
+
     parser_config = {
         "className": class_name,
     }
@@ -56,13 +56,13 @@ if __name__ == '__main__':
                                         Intercept=0
                                         Slope=1
             """) % (feature_cnt, query_name)
-            transform_str = transform_str + query_transform
+            transform_str += query_transform
             print("Query_idx in transformed data is: %d" % feature_cnt)
         parser_config["transform"] = transform_str
         parser_config["header"] = header_str
-    else :
-        if (query_idx > -1):
-            raise ValueError("No header file exists, can't auto generate query column for transformed data!")
+    elif (query_idx > -1):
+        raise ValueError("No header file exists, can't auto generate query column for transformed data!")
+    else:
         parser_config["transform"] = transform_str
     with open(parser_config_file, 'w') as fout:
         json.dump(parser_config, fout)
